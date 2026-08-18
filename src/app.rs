@@ -84,7 +84,6 @@ impl App {
         &mut self,
         activity: &DiscordRichPresence,
     ) -> Result<(), Box<dyn Error + Sync + Send>> {
-
         let command = SetActivity {
             pid: std::process::id(),
             activity: &activity,

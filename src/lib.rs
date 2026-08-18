@@ -63,7 +63,6 @@ where
     where
         M: Display + ToString + Into<String>,
     {
-
         self.bus
             .publish(DiscordEvent::ActivityUpdated(content.into()).into())?;
 
