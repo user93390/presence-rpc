@@ -7,6 +7,9 @@ image: rust:1-alpine3.23
 variables:
   CARGO_HOME: "$CI_PROJECT_DIR/.cargo"
 
+before_script:
+  - rustup component add rustfmt clippy
+
 cache:
   key: cargo
   paths:
