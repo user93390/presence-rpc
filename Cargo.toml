@@ -8,7 +8,7 @@ description = "A minimal implementation of discord rich presence"
 documentation = "https://docs.rs/bitflags"
 homepage = "https://gitlab.com/seasnail1/presence-rpc"
 repository = "https://gitlab.com/seasnail1/presence-rpc"
-keywords = ["rich-presence", "discord rich presence", "rpc"]
+keywords = ["rich-presence", "rpc"]
 exclude = [".*"]
 
 readme = "README.md"
