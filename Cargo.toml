@@ -4,6 +4,16 @@ version = "0.0.1"
 edition = "2024"
 authors = ["seasnail1"]
 license = "Apache-2.0"
+description = "A minimal implementation of discord rich presence"
+documentation = "https://docs.rs/bitflags"
+homepage = "https://gitlab.com/seasnail1/presence-rpc"
+repository = "https://gitlab.com/seasnail1/presence-rpc"
+keywords = ["rich-presence", "discord rich presence", "rpc"]
+exclude = [".*"]
+
+readme = "README.md"
+
+
 
 [dependencies]
 flume = { version = "0.12.0", default-features = false }
