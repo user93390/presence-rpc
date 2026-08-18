@@ -1,0 +1,1 @@
+A mininal discord presence library for rust applications
