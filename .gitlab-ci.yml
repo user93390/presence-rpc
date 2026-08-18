@@ -21,7 +21,7 @@ test:
   script:
     - cargo fmt --check
     - cargo test
-    - cargo publish
+    - cargo publish --run-dry
 
 publish:
   stage: publish
