@@ -7,8 +7,8 @@
 
 </div>
 
-<p>Presence-rpc is an incredibly small library that makes creating rich presences for discord easy for your application.</p>
-<p>This library comes with an easy-to-use api that allows you to have lots of control. Here is a code example</p>
+Presence-rpc is an incredibly small library that makes creating rich presences easy for your application
+This library comes with an easy-to-use api that allows you to have lots of control. Here is a code example
 
 ```rust
 use std::error::Error;
@@ -22,7 +22,7 @@ fn main() -> Result<(), Box<dyn Error + Sync + Send>> {
 
     app.connect(&client)?;
 
-    let activity = DiscordRichPresence::new()
+    let activity = DiscordRichPresence::default()
         .state("Listening to music")
         .details("Why do programmers hate light mode? Because it attracts more bugs!")
         .start_now();
@@ -33,22 +33,23 @@ fn main() -> Result<(), Box<dyn Error + Sync + Send>> {
 }
 ```
 
-<h2>Minimizing Dependencies</h2>
+## Minimizing Dependencies
+
+We do in fact have support for custom errors via [thiserror](https://crates.io/crates/thiserror).
 Presence-rpc only uses 3 dependencies; one of them being [flume](https://crates.io/crates/flume).
-Honestly most of the dependencies I've chosen are very lightweight and don't require many dependencies
-themselfs. We do in fact have support for custom errors via [thiserror](https://crates.io/crates/thiserror), including JSON parsing via [miniserde](https://crates.io/crates/miniserde), a superset to serde to reduce general library size.
+Honestly the dependencies I've chosen are lightweight.
+There are plenty of other discord rpc, feel free to use them instead!
+
+## For Asynchronous Applications
+
+It is not a garentee that Presence-rpc will work in an async context.
+We will not be adding asynchronous support in any time.
 
 
+## Supported  Operating Systems
 
-<h2>For Asynchronous Applications</h2>
-
-<p>It is not a garentee that Presence-rpc will work in an async context. We will not be adding asynchronous support in any time.</p>
-
-
-<h2>Supported  Operating Systems</h2>
-
-| Operating System  	| Supported   | Developer's message                       |
-|-------------------	|-----------  |-------------------------------------------|
-| Windows           	| ✅          | Supported. Shouldn't be using it though.  |
-| Unix (Linux, Mac) 	| ✅          | Developed on and well tested.             |
-| BSD/FreeBSD           | 🚫          | 😉                                        |
+| Operating System  | Supported   | Developer's message                       |
+|-------------------|-----------  |-------------------------------------------|
+| Windows           | ✅          | Supported. Shouldn't be using it though.  |
+| Unix (Linux, Mac) | ✅          | Developed on and well tested.             |
+| BSD/FreeBSD       | 🚫          | 😉                                        |
