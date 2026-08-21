@@ -125,7 +125,7 @@ impl App {
         activity: DiscordRichPresence,
     ) -> Result<(), Box<dyn Error + Sync + Send>> {
         let command = EasyActivity {
-            cmd: "SET_ACTIVITY".to_string(),
+            cmd: String::from("SET_ACTIVITY"),
             args: EasyActivityArgs {
                 pid: std::process::id(),
                 activity,
