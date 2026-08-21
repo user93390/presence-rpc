@@ -7,7 +7,7 @@
 
 </div>
 
-<p>Presence-rpc is an incredibly small library that makes creating rich presences easy for your application.</p>
+<p>Presence-rpc is an incredibly small library that makes creating rich presences for discord easy for your application.</p>
 <p>This library comes with an easy-to-use api that allows you to have lots of control. Here is a code example</p>
 
 ```rust
