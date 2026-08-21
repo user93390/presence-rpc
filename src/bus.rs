@@ -7,9 +7,13 @@ use thiserror::Error;
 pub enum BusError {
     #[error("Failed to acquire subscriber lock: {0}")]
     LockError(Cow<'static, str>),
+}
 
-    #[error("Failed to deliver event to any subscribers")]
-    PublishError,
+#[derive(PartialEq, Eq)]
+pub enum Event {
+    Connected,
+    ActivityUpdated,
+    Disconnected,
 }
 
 #[derive(Clone)]

@@ -1,4 +1,5 @@
-use crate::bus::EventBus;
+use crate::app::AppError;
+use crate::bus::{Event, EventBus};
 use std::fmt::{self};
 
 use std::{
@@ -16,6 +17,16 @@ pub enum DiscordEvent {
     Connected { pid: usize },
     ActivityUpdated(String),
     Disconnected,
+}
+
+impl DiscordEvent {
+    pub fn kind(&self) -> Event {
+        match self {
+            DiscordEvent::ActivityUpdated(_) => Event::ActivityUpdated,
+            DiscordEvent::Disconnected => Event::Disconnected,
+            DiscordEvent::Connected { pid } => Event::Connected,
+        }
+    }
 }
 
 impl Display for DiscordEvent {
@@ -53,7 +64,7 @@ where
     T: Send + Clone + Sync + Debug + Into<DiscordEvent> + Display + 'static,
 {
     pub fn new(id: u64) -> Self {
-        DiscordClient {
+        Self {
             app_id: Some(id),
             bus: EventBus::new(),
         }
@@ -69,18 +80,20 @@ where
         Ok(())
     }
 
-    pub fn on_discord_event<F, G>(&self, req: DiscordEvent, f: F)
+    pub fn on_discord_event<F>(&self, req: Event, f: F)
     where
-        F: FnOnce(DiscordEvent) -> G + Sync + Send + Copy + 'static,
-        G: Sync + Send,
+        F: Fn(DiscordEvent) -> Result<(), AppError> + Send + Sync + 'static,
     {
-        let rx2 = self.bus.subscribe().unwrap();
-        let req_t: T = req.into();
+        let rx = self.bus.subscribe().unwrap();
 
         thread::spawn(move || {
-            while let Ok(event) = rx2.recv() {
-                if req_t == event {
-                    f(event.into());
+            while let Ok(event) = rx.recv() {
+                let event: DiscordEvent = event.into();
+
+                if event.kind() == req {
+                    if let Err(err) = f(event) {
+                        eprintln!("Discord event error: {err}");
+                    }
                 }
             }
         });

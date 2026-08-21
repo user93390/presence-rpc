@@ -44,10 +44,10 @@ pub(crate) fn scan_unix() -> Option<(u8, PathBuf)> {
 
     let mut dirs = Vec::new();
     for var in &["XDG_RUNTIME_DIR", "TMPDIR", "TMP", "TEMP"] {
-        if let Ok(val) = env::var(var) {
-            if !val.is_empty() {
-                dirs.push(PathBuf::from(val));
-            }
+        if let Ok(val) = env::var(var)
+            && !val.is_empty()
+        {
+            dirs.push(PathBuf::from(val));
         }
     }
 

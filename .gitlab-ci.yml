@@ -1,5 +1,5 @@
 stages:
-  - test
+  - check
   - publish
 
 image: rust:1-alpine3.23
@@ -16,8 +16,8 @@ cache:
     - .cargo/
     - target/
 
-test:
-  stage: test
+check:
+  stage: check
   script:
     - cargo fmt --check
     - cargo test

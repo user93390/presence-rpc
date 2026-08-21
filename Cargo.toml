@@ -14,8 +14,8 @@ readme = "README.md"
 
 [dependencies]
 flume = { version = "0.12.0", default-features = false }
+nanoserde = {version = "0.2.1", default-features = false, features = ["std", "json"]}
 thiserror = { version = "2.0.20", default-features = false }
-miniserde = "0.1.46"
 
 [profile.release]
 opt-level = "z"
