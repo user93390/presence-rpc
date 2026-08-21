@@ -1,7 +1,10 @@
 <div align="center">
-    ![Handmade](https://badges.ws/handmade)
-    ![Size](https://badges.ws/crates/size/presence-rpc)
-    <h1>Presence-Rpc</h1>
+
+![Handmade](https://badges.ws/handmade)
+![Size](https://badges.ws/crates/size/presence-rpc)
+
+# Presence-Rpc
+
 </div>
 
 <p>Presence-rpc is an incredibly small library that makes creating rich presences easy for your application.</p>
